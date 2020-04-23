@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_app/models/detination.dart';
 
 class DestinationCarousel extends StatelessWidget {
@@ -15,7 +16,7 @@ class DestinationCarousel extends StatelessWidget {
                 child: Text(
                   'Top Destinations',
                   style: TextStyle(
-                    fontSize: 22,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -37,25 +38,109 @@ class DestinationCarousel extends StatelessWidget {
         ),
         Container(
           height: 300,
-          color: Colors.blue,
           child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: destinations.length,
               itemBuilder: (BuildContext context, int index) {
                 Destination destination = destinations[index];
                 return Container(
-                  color: Colors.red,
+                  width: 200,
                   margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   child: Stack(
+                    alignment: Alignment.topCenter,
                     children: <Widget>[
+                      Positioned(
+                        bottom: 0,
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          height: 120,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.white,
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Text(
+                                '${destination.activities.length} activities',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 20),
+                              ),
+                              Text(
+                                destination.description,
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                       Container(
-                        height: 120,
-                        width: 200,
-                        color: Colors.white,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black26,
+                              offset: Offset(0, 2),
+                              blurRadius: 6,
+                            ),
+                          ],
+                        ),
+                        child: Stack(
+                          children: <Widget>[
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Image(
+                                height: 180,
+                                width: 180,
+                                image: AssetImage(destination.imageUrl),
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                            Positioned(
+                              left: 10,
+                              bottom: 10,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  Text(
+                                    destination.city,
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 22,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: <Widget>[
+                                      Icon(
+                                        FontAwesomeIcons.locationArrow,
+                                        size: 10,
+                                        color: Colors.white,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        destination.country,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     ],
                   ),
-                  width: 210,
                 );
               }),
         )
