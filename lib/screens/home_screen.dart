@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travel_app/widgets/hotel_carousel.dart';
 import '../widgets/destination_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +10,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
+  int _currentTab = 0;
   List<IconData> _icons = [
     FontAwesomeIcons.plane,
     FontAwesomeIcons.bed,
@@ -43,6 +45,13 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _tapBottomNavigationItem(currentIndex) {
+    setState(() {
+      _currentTab = currentIndex;
+
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,11 +77,31 @@ class _HomeScreenState extends State<HomeScreen> {
                   .map((mapEntry) => _buildIcon(mapEntry.key))
                   .toList(),
             ),
-            DestinationCarousel()
+            DestinationCarousel(),
+            HotelCarousel(),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (int currentIndex) => _tapBottomNavigationItem(currentIndex),
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.local_pizza),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: CircleAvatar(
+              backgroundImage: NetworkImage('https://dreambuilders.dk/wp-content/uploads/2015/03/myAvatar-9new.png'),
+            ),
+            title: SizedBox.shrink(),
+          ),
+        ],
+        currentIndex: _currentTab,
       ),
     );
   }
 }
-
