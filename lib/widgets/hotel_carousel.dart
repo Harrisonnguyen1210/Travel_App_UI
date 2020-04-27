@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../models/detination.dart';
 import '../models/hotel.dart';
 
 class HotelCarousel extends StatelessWidget {
@@ -53,7 +52,7 @@ class HotelCarousel extends StatelessWidget {
                   alignment: Alignment.topCenter,
                   children: <Widget>[
                     Positioned(
-                      bottom: 20,
+                      bottom: 0,
                       child: Container(
                         padding: EdgeInsets.all(8),
                         height: 120,
@@ -75,10 +74,13 @@ class HotelCarousel extends StatelessWidget {
                               hotel.address,
                               style: TextStyle(color: Colors.grey),
                             ),
-                            Text(
-                              '\$${hotel.price}/night',
-                              style: TextStyle(
-                                fontWeight: FontWeight.w500,
+                            Padding(
+                              padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                '\$${hotel.price}/night',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
                             ),
                           ],

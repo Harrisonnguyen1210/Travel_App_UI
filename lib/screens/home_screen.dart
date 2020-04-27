@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       body: SafeArea(
         child: ListView(
-          padding: EdgeInsets.symmetric(vertical: 30),
+          padding: EdgeInsets.only(top: 30),
           children: <Widget>[
             Padding(
               padding: EdgeInsets.only(left: 20, right: 120, bottom: 20),
