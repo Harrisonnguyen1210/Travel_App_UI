@@ -63,7 +63,7 @@ class DestinationCarousel extends StatelessWidget {
                       alignment: Alignment.topCenter,
                       children: <Widget>[
                         Positioned(
-                          bottom: 0,
+                          bottom: 10,
                           child: Container(
                             padding: EdgeInsets.all(8),
                             height: 120,
@@ -76,15 +76,19 @@ class DestinationCarousel extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                Text(
-                                  '${destination.activities.length} activities',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 20),
+                                Flexible(
+                                  child: Text(
+                                    '${destination.activities.length} activities',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20),
+                                  ),
                                 ),
-                                Text(
-                                  destination.description,
-                                  style: TextStyle(color: Colors.grey),
+                                Flexible(
+                                  child: Text(
+                                    destination.description,
+                                    style: TextStyle(color: Colors.grey),
+                                  ),
                                 ),
                               ],
                             ),
