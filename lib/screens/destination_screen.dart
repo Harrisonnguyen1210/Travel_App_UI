@@ -173,15 +173,16 @@ class _DestinationScreenState extends State<DestinationScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: <Widget>[
-                                Container(
-                                  width: 150,
-                                  child: Text(
-                                    activity.name,
-                                    maxLines: 2,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18),
+                                Flexible(
+                                  child: Container(
+                                    child: Text(
+                                      activity.name,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 18),
+                                    ),
                                   ),
                                 ),
                                 Column(
@@ -207,26 +208,28 @@ class _DestinationScreenState extends State<DestinationScreen> {
                             _buildRatingStars(activity.rating),
                             Row(
                               children: <Widget>[
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 100,
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.circular(10),
+                                Flexible(
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 35,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).accentColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(activity.startTimes[0]),
                                   ),
-                                  child: Text(activity.startTimes[0]),
                                 ),
                                 SizedBox(width: 10),
-                                Container(
-                                  alignment: Alignment.center,
-                                  width: 100,
-                                  height: 35,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context).accentColor,
-                                    borderRadius: BorderRadius.circular(10),
+                                Flexible(
+                                  child: Container(
+                                    alignment: Alignment.center,
+                                    height: 35,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).accentColor,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Text(activity.startTimes[1]),
                                   ),
-                                  child: Text(activity.startTimes[1]),
                                 ),
                               ],
                             )
